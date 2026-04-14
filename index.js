@@ -45,3 +45,38 @@ const bookStore = {
 
 // Write your code here!
 
+// Select Title Element
+const bookStoreTitle = document.getElementById('header');
+
+// Change element to match bookstore name
+bookStoreTitle.textContent = bookStore.name;
+
+// Step 3: Book Elements
+const bookList = document.getElementById('book-list');
+
+// Remove the placeholder li
+const placeholder = document.getElementById('delete-this');
+if (placeholder) {
+    placeholder.remove();
+}
+
+// Loop through every book element
+bookStore.books.forEach(book => {
+    // Create elements for each book
+    const bookContainer = document.createElement('li');
+    const bookTitle = document.createElement('h3');
+    const bookAuthor = document.createElement('p');
+    const bookImage = document.createElement('img');
+
+    // Change the textContent of each element to match book object
+    bookTitle.textContent = book.title;
+    bookAuthor.textContent = book.author;
+    bookImage.src = book.imageUrl;
+
+    // Append book elements to bookList
+    bookContainer.appendChild(bookTitle);
+    bookContainer.appendChild(bookAuthor);
+    bookContainer.appendChild(bookImage);
+    bookList.appendChild(bookContainer);
+});
+
